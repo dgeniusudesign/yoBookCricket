@@ -1,92 +1,60 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC);
 
-/* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-family: 'Alegreya Sans SC';
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+#topHeader {
+  background-color: #1976D2;
+  color: white;
+  h1 {
+    margin: 0;
+    padding: 20px;
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+#middleHeader {
+  height: 200px;
+  background-color: #2196F3;
+  color: white;
+  h2 {
+    margin: 0;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
+#logoContainer {
+  padding-top: 40px;
+  img {
+    height: auto;
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+select.form-control, select.form-control:focus  {
+  border: 0;
+  outline: 1px inset black;
+  outline-offset:-1px;
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
+#submitButton {
+  margin-top: 30px;
+  border: none;
+  background-color: #2196F3;
+  color: white;
+}
 
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+#errDiv {
+  width: 50%;
+  margin: 20px auto;
+  background-color: #EF5350;
+  color: white;
+  text-weight: bold;
+  p {
+    margin: 20px 0;
+    font-size: 20px;
   }
 }

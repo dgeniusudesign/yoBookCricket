@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>FinalBookCricket</title>
+    <title>Game Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -30,71 +30,8 @@
         <img src="images/logo.png" height="50px" width="50px" />
       </div>
       <h2>Welcome to Book Cricket</h2>
-    </div>
-
-    <div class="container">
-      <form action="game.html" id="mainForm" onsubmit="return validateForm()">
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3 text-center">
-            <h3>Select Match Type</h3>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-sm-1 col-sm-offset-5">
-          <label>
-            <input type="radio" name="matchType" id="t20Radio" value="T20">
-            T20
-          </label>
-          </div>
-          <div class="col-sm-1">
-          <label>
-            <input type="radio" name="matchType" id="odiRadio" value="ODI">
-            ODI
-          </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3 text-center">
-            <h3>Select Teams</h3>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-sm-2 col-sm-offset-4">
-            <select class="form-control" name="ownTeam" id="ownTeamSelect">
-              <option>Select Team</option>
-              <option>India</option>
-              <option>Australia</option>
-              <option>SriLanka</option>
-              <option>Pakistan</option>
-              <option>SouthAfrica</option>
-              <option>England</option>
-              <option>NewZealand</option>
-              <option>West Indies</option>
-            </select>
-          </div>
-          <div class="col-sm-2">
-            <select class="form-control" name="oppTeam" id="oppTeamSelect">
-              <option>Select Team</option>
-              <option>India</option>
-              <option>Australia</option>
-              <option>SriLanka</option>
-              <option>Pakistan</option>
-              <option>SouthAfrica</option>
-              <option>England</option>
-              <option>NewZealand</option>
-              <option>West Indies</option>
-            </select>
-          </div>
-        </div>
-        <div class="row text-center">
-          <input type="submit" id="submitButton" value="Start">
-        </div>
-        <div class="row text-center" id="errDiv">
-          <div class="col-sm-6 col-sm-offset-3">
-            <p id="errMsg"></p>
-          </div>
-        </div>
-      </form>
+      <h2 id="gameTitle"></h2>
+      <h3 id="gameTypeTitle"></h3>
     </div>
 
 
@@ -127,7 +64,7 @@
     </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/form.js"></script>
+        <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>
