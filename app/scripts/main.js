@@ -24,7 +24,172 @@ function parseURLParams(url) {
 }
 
 function goToStats() {
-  alert("This will soon be implemented!");
+  $("#statsDiv").show();
+  location.href = "#statsDiv";
+  $("#battingChart").highcharts({
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Batting Chart'
+    },
+    subtitle: {
+      text: (ownTeam+' vs '+oppTeam)
+    },
+    xAxis: {
+      categories: batsmanName,
+      title: {
+          text: "Batsman"
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: null
+      },
+      labels: {
+        overflow: 'justify'
+      }
+    },
+    plotOptions: {
+      bar: {
+        dataLabels: {
+            enabled: true
+        }
+      }
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'top',
+      x: -40,
+      y: 100,
+      floating: true,
+      borderWidth: 1,
+      backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+      shadow: true
+    },
+    credits: {
+      enabled: false
+    },
+    series: [{
+      name: 'Runs',
+      data: batsmanRuns
+    }, {
+      name: 'Balls',
+      data: batsmanBalls
+    }]
+  });
+  $('#bowlingChart').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: {
+      text: 'Runs Conceeded Share'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          style: {
+              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: 'Run share',
+      data: [
+        [bowlerName[0],   (bowlerRuns[0]*100)/teamTotal],
+        [bowlerName[1],   (bowlerRuns[1]*100)/teamTotal],
+        [bowlerName[2],   (bowlerRuns[2]*100)/teamTotal],
+        [bowlerName[3],   (bowlerRuns[3]*100)/teamTotal],
+        [bowlerName[4],   (bowlerRuns[4]*100)/teamTotal]
+      ]
+    }]
+  });
+  $("#partnershipChart").highcharts({
+    chart: {
+      zoomType: 'xy'
+    },
+    title: {
+      text: 'Partnership Runs and Balls'
+    },
+    subtitle: {
+      text: (ownTeam+' vs '+oppTeam)
+    },
+    xAxis: [{
+      categories: [1,2,3,4,5,6,7,8,9,10],
+      crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+      labels: {
+        format: '{value}',
+        style: {
+          color: Highcharts.getOptions().colors[1]
+        }
+      },
+      title: {
+        text: 'Balls',
+        style: {
+          color: Highcharts.getOptions().colors[1]
+        }
+      }
+    }, { // Secondary yAxis
+      title: {
+        text: 'Runs',
+        style: {
+          color: Highcharts.getOptions().colors[0]
+        }
+      },
+      labels: {
+        format: '{value}',
+        style: {
+          color: Highcharts.getOptions().colors[0]
+        }
+      },
+      opposite: true
+    }],
+    tooltip: {
+      shared: true
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'left',
+      x: 120,
+      verticalAlign: 'top',
+      y: 100,
+      floating: true,
+      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },
+    series: [{
+      name: 'Runs',
+      type: 'column',
+      yAxis: 1,
+      data: partnershipRuns,
+      tooltip: {
+        valueSuffix: ' runs'
+      }
+
+    }, {
+      name: 'Balls',
+      type: 'column',
+      yAxis: 1,
+      data: partnershipBalls,
+      tooltip: {
+        valueSuffix: ' balls'
+      }
+    }]
+  });
 }
 
 function goRestart() {
@@ -470,6 +635,16 @@ function handle(x) {
     gameover = true;
     result = "LOST";
     $("#gameStatus").text("You lost the game by "+(requiredRuns-1)+" runs");
+  } else if(wicketsRemaining==0 && requiredRuns ==1) {
+    alert("You lost the game!");
+    gameover = true;
+    result = "TIE";
+    $("#gameStatus").text("You tied the game");
+  } else if(ballsRemaining==0 && requiredRuns ==1) {
+    alert("You lost the game!");
+    gameover = true;
+    result = "TIE";
+    $("#gameStatus").text("You tied the game");
   }
   if(gameover) {
     $("#playButton").hide();
@@ -478,6 +653,7 @@ function handle(x) {
 }
 
 $(document).ready(function() {
+  $("#statsDiv").hide();
   $("#statsRestart").hide();
   $("#gameTitle").text(paramVals.ownTeam+" vs "+paramVals.oppTeam);
   $("#gameTypeTitle").text(paramVals.matchType+" Match"+"("+maxovers+" over Game)");
