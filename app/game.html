@@ -26,12 +26,9 @@
     </div>
 
     <div class="text-center" id="middleHeaderGame">
-      <div id="logoContainer">
-        <img src="images/logo.png" height="50px" width="50px" />
-      </div>
-      <h2>Welcome to Book Cricket</h2>
       <h2 id="gameTitle"></h2>
       <h3 id="gameTypeTitle"></h3>
+      <h3 id="gameCurrentScore"></h3>
       <h4 id="gameTarget"></h4>
       <h4 id="gameStatus"></h4>
     </div>
@@ -133,16 +130,31 @@
           </div>
         </div>
       </div>
-      <div class="row" id="latest_ball">
-        <p id="latestBall">&nbsp;</p>
+      <div class="row text-center" id="latestBallDiv">
+        <span id="latestBall">&nbsp;</span>
       </div>
       <div class="row" id="playButton">
         <div class="col-sm-4 col-sm-offset-4 text-center">
           <button class="btn btn-default" id="play">Play</button>
         </div>
       </div>
+      <div class="row text-center" id="statsRestart">
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="row">
+            <div class="col-sm-6" id="statsButton">
+              <button class="btn btn-default" id="stats" onclick="goToStats()">Stats</button>
+            </div>
+            <div class="col-sm-6" id="restartButton">
+              <button class="btn btn-default" id="restart" onclick="goRestart()">Restart</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row" id="timeline">
-        <p id="allLatestBalls"></p>
+        <div class="col-sm-12">
+          <h3>Timeline(Most recent at the left end)</h3>
+          <p id="allLatestBalls"></p>
+        </div>
       </div>
       <div class="row" id="mainScorecard">
         <div class="col-sm-6" id="battingScorecard">
@@ -419,174 +431,176 @@
         </div>
       </div>
       <div class="row" id="partnerships">
-        <table class="table table-bordered">
-          <tr>
-            <th>Partnership</th>
-            <th>Runs</th>
-            <th>Balls</th>
-            <th>Fall of Wicket</th>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership0"></span>
-              <span id="partnershipStrike0"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns0"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls0"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket0">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership1"></span>
-              <span id="partnershipStrike1"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns1"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls1"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket1">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership2"></span>
-              <span id="partnershipStrike2"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns2"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls2"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket2">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership3"></span>
-              <span id="partnershipStrike3"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns3"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls3"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket3">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership4"></span>
-              <span id="partnershipStrike4"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns4"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls4"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket4">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership5"></span>
-              <span id="partnershipStrike5"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns5"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls5"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket5">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership6"></span>
-              <span id="partnershipStrike6"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns6"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls6"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket6">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership7"></span>
-              <span id="partnershipStrike7"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns7"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls7"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket7">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership8"></span>
-              <span id="partnershipStrike8"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns8"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls8"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket8">
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span id="partnership9"></span>
-              <span id="partnershipStrike9"></span>
-            </td>
-            <td>
-              <span id="partnershipRuns9"></span>
-            </td>
-            <td>
-              <span id="partnershipBalls9"></span>
-            </td>
-            <td>
-              <span id="fallOfWicket9">
-              </span>
-            </td>
-          </tr>
-        </table>
+        <div class="col-sm-12">
+          <table class="table table-bordered">
+            <tr>
+              <th>Partnership</th>
+              <th>Runs</th>
+              <th>Balls</th>
+              <th>Fall of Wicket</th>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership0"></span>
+                <span id="partnershipStrike0"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns0"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls0"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket0">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership1"></span>
+                <span id="partnershipStrike1"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns1"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls1"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket1">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership2"></span>
+                <span id="partnershipStrike2"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns2"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls2"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket2">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership3"></span>
+                <span id="partnershipStrike3"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns3"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls3"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket3">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership4"></span>
+                <span id="partnershipStrike4"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns4"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls4"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket4">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership5"></span>
+                <span id="partnershipStrike5"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns5"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls5"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket5">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership6"></span>
+                <span id="partnershipStrike6"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns6"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls6"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket6">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership7"></span>
+                <span id="partnershipStrike7"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns7"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls7"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket7">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership8"></span>
+                <span id="partnershipStrike8"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns8"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls8"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket8">
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="partnership9"></span>
+                <span id="partnershipStrike9"></span>
+              </td>
+              <td>
+                <span id="partnershipRuns9"></span>
+              </td>
+              <td>
+                <span id="partnershipBalls9"></span>
+              </td>
+              <td>
+                <span id="fallOfWicket9">
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
 

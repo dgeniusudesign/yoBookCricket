@@ -23,6 +23,7 @@ body {
   color: white;
   h2 {
     margin: 0;
+    padding: 30px 0 10px 0;
   }
   h4 {
     padding-bottom: 20px;
@@ -63,4 +64,77 @@ select.form-control, select.form-control:focus  {
     margin: 20px 0;
     font-size: 20px;
   }
+}
+
+#latestBall {
+  background-color: #2196F3;
+  color: white;
+  padding: 5px 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#latestBallDiv, #statsRestart {
+  margin-bottom: 10px;
+}
+
+#timeline {
+  padding: 10px 30px;
+  background-color: #1976D2;
+  color: white;
+  p {
+    font-size: 20px;
+  }
+  margin: 10px 0;
+}
+
+.btn {
+  border-radius: 0;
+  border: none !important;
+  color: white;
+  background-color: #1976D2;
+  font-size: 16px;
+}
+.btn:hover {
+  border-radius: 0;
+  border: none !important;
+  color: white;
+  background-color: #FF5722;
+}
+
+#play {
+  background-color: #FF5722;
+  margin-bottom: 10px;
+}
+
+.table {
+  font-size: 16px;
+  border: none !important;
+  th {
+    background-color: #455A64;
+    color:white;
+    padding-left: 10px;
+  }
+  td {
+    background-color: #607D8B;
+    color:white;
+    padding-left: 10px;
+  }
+}
+
+#battingScorecard {
+  p {
+    background-color: #607D8B;
+    color:white;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: -10px;
+  }
+}
+
+.table > tbody > tr > td, .table-bordered > tbody > tr > td, .table > tbody > tr > th, .table-bordered > tbody > tr > th {
+  border: none;
+}
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  padding-left: 13px;
 }

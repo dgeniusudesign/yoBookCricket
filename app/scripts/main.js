@@ -23,12 +23,18 @@ function parseURLParams(url) {
   return parms;
 }
 
+function goToStats() {
+  alert("This will soon be implemented!");
+}
 
+function goRestart() {
+  location.href = "index.html";
+}
 /*
  *  Variable declarations - self explanatory
  */
 
-
+var gameover = false;
 var paramVals = parseURLParams(window.location.href);
 var ownTeam = paramVals.ownTeam;
 var oppTeam = paramVals.oppTeam;
@@ -36,6 +42,10 @@ var matchType = paramVals.matchType;
 var maxovers = 0;
 var target = 0;
 var ballsRemaining = 0;
+var result = "";
+var allout = false;
+var targetAchieved = false;
+var ballsOver = false;
 //Setting the number of overs depending on the type of match.
 if( matchType == "ODI" ) {
   maxovers = 50;
@@ -50,9 +60,11 @@ var batsman1 = 0;
 var batsman2 = 1;
 var batsmanRuns = [0,0,0,0,0,0,0,0,0,0,0];
 var batsmanBalls = [0,0,0,0,0,0,0,0,0,0,0];
+var batsmanStrRate = [0,0,0,0,0,0,0,0,0,0,0];
 var teamWickets = 0;
 var teamTotal = 0;
 var batsmanCounter=batsman1;
+var teamBallsCount = 0;
 var teamOvers=0;
 var teamBalls=0;
 var bowlerOvers = [0,0,0,0,0];
@@ -60,6 +72,7 @@ var bowlerBalls = [0,0,0,0,0];
 var bowlerRuns = [0,0,0,0,0];
 var bowlerMaidens = [0,0,0,0,0];
 var bowlerWickets = [0,0,0,0,0];
+var bowlerEconomy = [0,0,0,0,0];
 var bowlerCounter = 0;
 var latestBowlerCounter1 = 0;
 var latestBowlerCounter2 = 1;
@@ -170,6 +183,7 @@ function handle(x) {
   }
   //First thing that is done is to increment the ball count for the team and the bowler
   teamBalls++;
+  teamBallsCount++;
   bowlerBalls[bowlerCounter]++;
   ballsRemaining--;
   /*
@@ -303,7 +317,7 @@ function handle(x) {
   //Showing the total score of the batsman
   document.getElementById(batsmanTotalIndicator).innerHTML = batsmanRuns[batsmanCounter]+"("+batsmanBalls[batsmanCounter]+")";
 
-  //Incrementing the team score at the bottom of batting card 
+  //Incrementing the team score at the bottom of batting card
   document.getElementById("team_score").innerHTML =  teamTotal+"/"+teamWickets;
   document.getElementById('teamOvers').innerHTML = teamOvers+"."+teamBalls;
 
@@ -396,16 +410,35 @@ function handle(x) {
     }
   }
 
+  // Calculating Batsman Strike Rate and Bowler Economy separately
+  batsmanStrRate[batsman1] = ((batsmanRuns[batsman1]/batsmanBalls[batsman1])*100).toFixed(2);
+  batsmanStrRate[batsman2] = ((batsmanRuns[batsman2]/batsmanBalls[batsman2])*100).toFixed(2);
+
+  if(!isFinite(batsmanStrRate[batsman1])) {
+    batsmanStrRate[batsman1] = "--";
+  }
+  if(!isFinite(batsmanStrRate[batsman2])) {
+    batsmanStrRate[batsman2] = "--";
+  }
+
+  bowlerEconomy[latestBowlerCounter1] = ((bowlerRuns[latestBowlerCounter1]/(bowlerOvers[latestBowlerCounter1]*6+bowlerBalls[latestBowlerCounter1]))*6).toFixed(2);
+  bowlerEconomy[latestBowlerCounter2] = ((bowlerRuns[latestBowlerCounter2]/(bowlerOvers[latestBowlerCounter2]*6+bowlerBalls[latestBowlerCounter2]))*6).toFixed(2);
+  if(!isFinite(bowlerEconomy[latestBowlerCounter1])) {
+    bowlerEconomy[latestBowlerCounter1] = "--";
+  }
+  if(!isFinite(bowlerEconomy[latestBowlerCounter2])) {
+    bowlerEconomy[latestBowlerCounter2] = "--";
+  }
   //Latest Batsman and Bowler score Handling
 
   document.getElementById("latestBatsmanName0").innerHTML=batsmanName[batsman1];
   document.getElementById("latestBatsmanRuns0").innerHTML=batsmanRuns[batsman1];
   document.getElementById("latestBatsmanBalls0").innerHTML=batsmanBalls[batsman1];
-  document.getElementById("latestBatsmanStrRate0").innerHTML=(batsmanRuns[batsman1]/batsmanBalls[batsman1])*100;
+  document.getElementById("latestBatsmanStrRate0").innerHTML=batsmanStrRate[batsman1];
   document.getElementById("latestBatsmanName1").innerHTML=batsmanName[batsman2];
   document.getElementById("latestBatsmanRuns1").innerHTML=batsmanRuns[batsman2];
   document.getElementById("latestBatsmanBalls1").innerHTML=batsmanBalls[batsman2];
-  document.getElementById("latestBatsmanStrRate1").innerHTML=(batsmanRuns[batsman2]/batsmanBalls[batsman2])*100;
+  document.getElementById("latestBatsmanStrRate1").innerHTML=batsmanStrRate[batsman2];
 
 
   document.getElementById("latestBowlerName0").innerHTML=bowlerName[latestBowlerCounter1];
@@ -413,20 +446,42 @@ function handle(x) {
   document.getElementById("latestBowlerMaidens0").innerHTML=bowlerMaidens[latestBowlerCounter1];
   document.getElementById("latestBowlerRuns0").innerHTML=bowlerRuns[latestBowlerCounter1];
   document.getElementById("latestBowlerWicket0").innerHTML=bowlerWickets[latestBowlerCounter1];
-  document.getElementById("latestBowlerEconomy0").innerHTML=bowlerRuns[latestBowlerCounter1]/bowlerOvers[latestBowlerCounter1];
+  document.getElementById("latestBowlerEconomy0").innerHTML=bowlerEconomy[latestBowlerCounter1];
   document.getElementById("latestBowlerName1").innerHTML=bowlerName[latestBowlerCounter2];
   document.getElementById("latestBowlerOvers1").innerHTML=bowlerOvers[latestBowlerCounter2]+"."+bowlerBalls[latestBowlerCounter2];
   document.getElementById("latestBowlerMaidens1").innerHTML=bowlerMaidens[latestBowlerCounter2];
   document.getElementById("latestBowlerRuns1").innerHTML=bowlerRuns[latestBowlerCounter2];
   document.getElementById("latestBowlerWicket1").innerHTML=bowlerWickets[latestBowlerCounter2];
-  document.getElementById("latestBowlerEconomy1").innerHTML=bowlerRuns[latestBowlerCounter2]/bowlerOvers[latestBowlerCounter2];
+  document.getElementById("latestBowlerEconomy1").innerHTML=bowlerEconomy[latestBowlerCounter2];
   $("#gameStatus").text(requiredRuns+" Runs required in "+ballsRemaining+" balls with "+wicketsRemaining+" wickets in hand");
-
+  $("#gameCurrentScore").text("Score - "+teamTotal+"/"+teamWickets+" in "+teamOvers+"."+teamBalls+" overs");
+  if(requiredRuns<=0) {
+    alert("You have won the game!");
+    gameover = true;
+    result="WON";
+    $("#gameStatus").text("You have won the game with "+ballsRemaining+" balls remaining and "+wicketsRemaining+" wickets in hand");
+  } else if(wicketsRemaining==0 && requiredRuns >1) {
+    alert("You lost the game!");
+    gameover = true;
+    result = "LOST";
+    $("#gameStatus").text("You lost the game by "+(requiredRuns-1)+" runs");
+  } else if(ballsRemaining==0 && requiredRuns >1) {
+    alert("You lost the game!");
+    gameover = true;
+    result = "LOST";
+    $("#gameStatus").text("You lost the game by "+(requiredRuns-1)+" runs");
+  }
+  if(gameover) {
+    $("#playButton").hide();
+    $("#statsRestart").show();
+  }
 }
 
 $(document).ready(function() {
+  $("#statsRestart").hide();
   $("#gameTitle").text(paramVals.ownTeam+" vs "+paramVals.oppTeam);
   $("#gameTypeTitle").text(paramVals.matchType+" Match"+"("+maxovers+" over Game)");
+  $("#gameCurrentScore").text("Score - "+teamTotal+"/"+teamWickets+" in "+teamOvers+"."+teamBalls+" overs");
   $("#gameTarget").text("Target - "+target+" in "+maxovers+" overs");
   $("#gameStatus").text(requiredRuns+" Runs required in "+ballsRemaining+" balls");
 });
