@@ -25,13 +25,569 @@
       <h1>Book Cricket</h1>
     </div>
 
-    <div class="text-center" id="middleHeader">
+    <div class="text-center" id="middleHeaderGame">
       <div id="logoContainer">
         <img src="images/logo.png" height="50px" width="50px" />
       </div>
       <h2>Welcome to Book Cricket</h2>
       <h2 id="gameTitle"></h2>
       <h3 id="gameTypeTitle"></h3>
+      <h4 id="gameTarget"></h4>
+      <h4 id="gameStatus"></h4>
+    </div>
+
+    <div class="container">
+      <div class="row" id="latestScore">
+        <div class="col-sm-6" id="latestBatting">
+          <div class="batting">
+            <table class="table table-bordered">
+              <tr>
+                <th>Batsmen</th>
+                <th>Runs</th>
+                <th>Balls</th>
+                <th>StrRate</th>
+              </tr>
+              <tr>
+                <td>
+                  <span id="latestBatsmanName0"></span><span id="latestBatsmanStrike0"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanRuns0"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanBalls0"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanStrRate0"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span id="latestBatsmanName1"></span><span id="latestBatsmanStrike1"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanRuns1"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanBalls1"></span>
+                </td>
+                <td>
+                  <span id="latestBatsmanStrRate1"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-6" id="latestBowling">
+          <div class="bowling">
+            <table class="table table-bordered">
+              <tr>
+                <th>Bowler</th>
+                <th>Overs</th>
+                <th>Maidens</th>
+                <th>Runs</th>
+                <th>Wickets</th>
+                <th>Economy</th>
+              </tr>
+              <tr>
+                <td>
+                  <span id="latestBowlerName0"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerOvers0"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerMaidens0"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerRuns0"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerWicket0"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerEconomy0"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span id="latestBowlerName1"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerOvers1"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerMaidens1"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerRuns1"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerWicket1"></span>
+                </td>
+                <td>
+                  <span id="latestBowlerEconomy1"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="latest_ball">
+        <p id="latestBall">&nbsp;</p>
+      </div>
+      <div class="row" id="playButton">
+        <div class="col-sm-4 col-sm-offset-4 text-center">
+          <button class="btn btn-default" id="play">Play</button>
+        </div>
+      </div>
+      <div class="row" id="timeline">
+        <p id="allLatestBalls"></p>
+      </div>
+      <div class="row" id="mainScorecard">
+        <div class="col-sm-6" id="battingScorecard">
+          <table class="table table-bordered">
+            <tr>
+              <th>Batsman</th>
+              <th>Runs</th>
+              <th>Total</th>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield0">
+                  <span id="batsmanName0">
+                  </span>
+                </span>
+                <span id="batsman_strike0"></span>
+              </td>
+              <td>
+                <span id="batsman_runs0"></span>
+              </td>
+              <td>
+                <span id="batsman_total0"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield1">
+                  <span id="batsmanName1">
+                  </span>
+                </span>
+                <span id="batsman_strike1"></span>
+              </td>
+              <td>
+                <span id="batsman_runs1"></span>
+              </td>
+              <td>
+                <span id="batsman_total1"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield2">
+                  <span id="batsmanName2">
+                  </span>
+                </span>
+                <span id="batsman_strike2"></span>
+              </td>
+              <td>
+                <span id="batsman_runs2"></span>
+              </td>
+              <td>
+                <span id="batsman_total2"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield3">
+                  <span id="batsmanName3">
+                  </span>
+                </span>
+                <span id="batsman_strike3"></span>
+              </td>
+              <td>
+                <span id="batsman_runs3"></span>
+              </td>
+              <td>
+                <span id="batsman_total3"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield4">
+                  <span id="batsmanName4">
+                  </span>
+                </span>
+                <span id="batsman_strike4"></span>
+              </td>
+              <td>
+                <span id="batsman_runs4"></span>
+              </td>
+              <td>
+                <span id="batsman_total4"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield5">
+                  <span id="batsmanName5">
+                  </span>
+                </span>
+                <span id="batsman_strike5"></span>
+              </td>
+              <td>
+                <span id="batsman_runs5"></span>
+              </td>
+              <td>
+                <span id="batsman_total5"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield6">
+                  <span id="batsmanName6">
+                  </span>
+                </span>
+                <span id="batsman_strike6"></span>
+              </td>
+              <td>
+                <span id="batsman_runs6"></span>
+              </td>
+              <td>
+                <span id="batsman_total6"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield7">
+                  <span id="batsmanName7">
+                  </span>
+                </span>
+                <span id="batsman_strike7"></span>
+              </td>
+              <td>
+                <span id="batsman_runs7"></span>
+              </td>
+              <td>
+                <span id="batsman_total7"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield8">
+                  <span id="batsmanName8">
+                  </span>
+                </span>
+                <span id="batsman_strike8"></span>
+              </td>
+              <td>
+                <span id="batsman_runs8"></span>
+              </td>
+              <td>
+                <span id="batsman_total8"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield9">
+                  <span id="batsmanName9">
+                  </span>
+                </span>
+                <span id="batsman_strike9"></span>
+              </td>
+              <td>
+                <span id="batsman_runs9"></span>
+              </td>
+              <td>
+                <span id="batsman_total9"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="batsman_infield10">
+                  <span id="batsmanName10">
+                  </span>
+                </span>
+                <span id="batsman_strike10"></span>
+              </td>
+              <td>
+                <span id="batsman_runs10"></span>
+              </td>
+              <td>
+                <span id="batsman_total10"></span>
+              </td>
+            </tr>
+          </table>
+          <p>Team Total - &#09;<span id="team_score"></span> in <span id="teamOvers"></span>
+          </p>
+        </div>
+        <div class="col-sm-6" id="bowlingScorecard">
+          <table class="table table-bordered">
+            <tr>
+              <th>Bowler</th>
+              <th>Overs</th>
+              <th>Maidens</th>
+              <th>Runs</th>
+              <th>Wickets</th>
+            </tr>
+            <tr>
+              <td>
+                <span id="bowlerName0"></span><span id="bowler_strike0"></span>
+              </td>
+              <td>
+                <span id="bowler_balls0"></span>
+              </td>
+              <td>
+                <span id="bowler_maidens0"></span>
+              </td>
+              <td>
+                <span id="bowler_runs0"></span>
+              </td>
+              <td>
+                <span id="bowler_wickets0"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="bowlerName1"></span><span id="bowler_strike1"></span>
+              </td>
+              <td>
+                <span id="bowler_balls1"></span>
+              </td>
+              <td>
+                <span id="bowler_maidens1"></span>
+              </td>
+              <td>
+                <span id="bowler_runs1"></span>
+              </td>
+              <td>
+                <span id="bowler_wickets1"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="bowlerName2"></span><span id="bowler_strike2"></span>
+              </td>
+              <td>
+                <span id="bowler_balls2"></span>
+              </td>
+              <td>
+                <span id="bowler_maidens2"></span>
+              </td>
+              <td>
+                <span id="bowler_runs2"></span>
+              </td>
+              <td>
+                <span id="bowler_wickets2"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="bowlerName3"></span><span id="bowler_strike3"></span>
+              </td>
+              <td>
+                <span id="bowler_balls3"></span>
+              </td>
+              <td>
+                <span id="bowler_maidens3"></span>
+              </td>
+              <td>
+                <span id="bowler_runs3"></span>
+              </td>
+              <td>
+                <span id="bowler_wickets3"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="bowlerName4"></span><span id="bowler_strike4"></span>
+              </td>
+              <td>
+                <span id="bowler_balls4"></span>
+              </td>
+              <td>
+                <span id="bowler_maidens4"></span>
+              </td>
+              <td>
+                <span id="bowler_runs4"></span>
+              </td>
+              <td>
+                <span id="bowler_wickets4"></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row" id="partnerships">
+        <table class="table table-bordered">
+          <tr>
+            <th>Partnership</th>
+            <th>Runs</th>
+            <th>Balls</th>
+            <th>Fall of Wicket</th>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership0"></span>
+              <span id="partnershipStrike0"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns0"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls0"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket0">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership1"></span>
+              <span id="partnershipStrike1"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns1"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls1"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket1">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership2"></span>
+              <span id="partnershipStrike2"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns2"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls2"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket2">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership3"></span>
+              <span id="partnershipStrike3"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns3"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls3"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket3">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership4"></span>
+              <span id="partnershipStrike4"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns4"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls4"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket4">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership5"></span>
+              <span id="partnershipStrike5"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns5"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls5"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket5">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership6"></span>
+              <span id="partnershipStrike6"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns6"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls6"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket6">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership7"></span>
+              <span id="partnershipStrike7"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns7"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls7"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket7">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership8"></span>
+              <span id="partnershipStrike8"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns8"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls8"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket8">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="partnership9"></span>
+              <span id="partnershipStrike9"></span>
+            </td>
+            <td>
+              <span id="partnershipRuns9"></span>
+            </td>
+            <td>
+              <span id="partnershipBalls9"></span>
+            </td>
+            <td>
+              <span id="fallOfWicket9">
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
 
