@@ -1,6 +1,5 @@
 // Generated on 2015-05-26 using
 // generator-webapp 0.5.1
-'use strict';
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -130,13 +129,7 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish')
-      },
-      all: [
-        'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
-      ]
+      }
     },
 
     // Mocha testing framework configuration options
